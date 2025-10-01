@@ -1,0 +1,31 @@
+{
+	"name": "thumbnail-generator-lambda",
+	"version": "1.0.0",
+	"description": "AWS Lambda function para processar imagens e gerar thumbnails",
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"deploy": "yarn run build && yarn run package",
+		"package": "yarn install --production && rm -f deployment.zip && (cd dist && zip -rq ../deployment.zip .) && zip -rq deployment.zip node_modules/ -x 'node_modules/sharp/*'",
+		"clean": "rm -rf dist/ deployment.zip node_modules/"
+	},
+	"dependencies": {
+		"@aws-sdk/client-s3": "^3.438.0",
+		"aws-lambda": "^1.0.7",
+		"sharp": "^0.34.4"
+	},
+	"devDependencies": {
+		"@types/aws-lambda": "^8.10.119",
+		"@types/node": "^20.8.0",
+		"typescript": "^5.2.2"
+	},
+	"keywords": [
+		"aws",
+		"lambda",
+		"image-processing",
+		"sharp"
+	],
+	"author": "drefahl",
+	"license": "MIT"
+}

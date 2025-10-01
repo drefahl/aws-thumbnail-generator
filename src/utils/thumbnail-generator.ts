@@ -1,0 +1,1 @@
+../../lambda/src/utils/thumbnail-generator.ts
